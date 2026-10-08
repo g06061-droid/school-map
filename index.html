@@ -804,11 +804,11 @@
         }
 
         // 画像が見つからない場合のフォールバック（仮の図面を表示）
-        //function renderSVGFallback(imgElem, building, floor) {
-            //const container = imgElem.parentElement;
-            //const rooms = (schoolData[building] && schoolData[building].rooms[floor]) 
-                //? schoolData[building].rooms[floor] 
-                //: ['部屋A', '部屋B'];
+        function renderSVGFallback(imgElem, building, floor) {
+            const container = imgElem.parentElement;
+            const rooms = (schoolData[building] && schoolData[building].rooms[floor]) 
+                ? schoolData[building].rooms[floor] 
+                : ['部屋A', '部屋B'];
 
             //const roomBoxes = rooms.map((r, i) => {
                 //const x = 40 + (i % 3) * 180;

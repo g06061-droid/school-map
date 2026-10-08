@@ -685,34 +685,38 @@
 
         // 3Dモデル読み込みとエラー判定-------------------------------------------------------------------------------------------------------------------//
         //----------------------------------------------------------------------------------------------------------------------------------------------//
-        function init3DViewer() {
-            const viewer = document.getElementById('school-viewer');
-            const banner = document.getElementById('notice-banner');
-            const fileInput = document.getElementById('file-input');
-            const targetFileName = '学校.glb';
-
-            try {
-                const currentHref = window.location.href;
-                if (currentHref.startsWith('http://') || currentHref.startsWith('https://')) {
-                    viewer.src = new URL(targetFileName, currentHref).href;
-                } //else {
-                    //banner.classList.remove('hidden');
-                //}
-            } catch (e) {
-                banner.classList.remove('hidden');
-            }
+//       function init3DViewer() {
+//            const viewer = document.getElementById('school-viewer');
+//            const banner = document.getElementById('notice-banner');
+//            const fileInput = document.getElementById('file-input');
+//            const targetFileName = '学校.glb';
+//
+//            try {
+//            const currentHref = window.location.href;
+//                if (currentHref.startsWith('http://') || currentHref.startsWith('https://')) {
+//                    viewer.src = new URL(targetFileName, currentHref).href;
+//                } //else {
+//                    //banner.classList.remove('hidden');
+//                }
+//            } catch (e) {
+//                banner.classList.remove('hidden');
+//            }
 
             //viewer.addEventListener('error', () => {
                 //banner.classList.remove('hidden');
             //});
 
-            fileInput.addEventListener('change', (e) => {
-                const file = e.target.files[0];
-                if (file) {
-                    viewer.src = URL.createObjectURL(file);
-                    banner.classList.add('hidden');
-                }
-            });
+//            fileInput.addEventListener('change', (e) => {
+//                const file = e.target.files[0];
+//                if (file) {
+//                    viewer.src = URL.createObjectURL(file);
+//                    banner.classList.add('hidden');
+//                }
+//            });
+//        }
+        function init3DViewer() {
+             const viewer = document.getElementById('school-viewer');
+             viewer.src = '学校.glb';
         }
 
         // 階数選択モーダルを開く
@@ -794,38 +798,6 @@
                      onerror="renderSVGFallback(this, '${building}', ${floor})">
             `;
         }
-
-        // 画像が見つからない場合のフォールバック（仮の図面を表示）
-        //function renderSVGFallback(imgElem, building, floor) {
-            //const container = imgElem.parentElement;
-            //const rooms = (schoolData[building] && schoolData[building].rooms[floor]) 
-              //  ? schoolData[building].rooms[floor] 
-          //      : ['部屋A', '部屋B'];
-
-       //     const roomBoxes = rooms.map((r, i) => {
-       //         const x = 40 + (i % 3) * 180;
-       //         const y = 70 + Math.floor(i / 3) * 100;
-       //         return `
-       //             <g transform="translate(${x}, ${y})">
-       //                 <rect width="160" height="80" rx="8" fill="#ffffff" stroke="#00acc1" stroke-width="2"/>
-       //                 <text x="80" y="45" font-family="sans-serif" font-size="13" font-weight="bold" fill="#006064" text-anchor="middle" dominant-baseline="middle">${r}</text>
-       //             </g>
-       //         `;
-       //     }).join('');
-
-       //     container.innerHTML = `
-       //         <div style="width: 100%; text-align: center;">
-       //             <div style="font-size: 11px; color: #00838f; margin-bottom: 8px;">
-       //                 ※ <code>${imgElem.src}</code> が見つからないため、簡易レイアウトを表示しています
-       //             </div>
-       //             <svg viewBox="0 0 600 320" style="width: 100%; max-height: 380px; background: #e0f7fa; border-radius: 12px; border: 1px dashed #00acc1;">
-       //                 <rect x="15" y="15" width="570" height="290" rx="12" fill="none" stroke="#00838f" stroke-width="2" stroke-dasharray="4 4"/>
-       //                 <text x="30" y="40" font-family="sans-serif" font-size="13" font-weight="bold" fill="#006064">📌 【レイアウト構造図】 ${building} ${floor}階</text>
-       //                 ${roomBoxes}
-       //             </svg>
-       //         </div>
-       //     `;
-       // }
 
         // 部屋タグの挿入
         function renderRoomTags(building, floor) {

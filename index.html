@@ -691,7 +691,8 @@
             init3DViewer();
         });
 
-        // 3Dモデル読み込みとエラー判定
+        // 3Dモデル読み込みとエラー判定-------------------------------------------------------------------------------------------------------------------//
+        //----------------------------------------------------------------------------------------------------------------------------------------------//
         function init3DViewer() {
             const viewer = document.getElementById('school-viewer');
             const banner = document.getElementById('notice-banner');
@@ -702,16 +703,16 @@
                 const currentHref = window.location.href;
                 if (currentHref.startsWith('http://') || currentHref.startsWith('https://')) {
                     viewer.src = new URL(targetFileName, currentHref).href;
-                } else {
-                    banner.classList.remove('hidden');
-                }
+                } //else {
+                    //banner.classList.remove('hidden');
+                //}
             } catch (e) {
                 banner.classList.remove('hidden');
             }
 
-            viewer.addEventListener('error', () => {
-                banner.classList.remove('hidden');
-            });
+            //viewer.addEventListener('error', () => {
+                //banner.classList.remove('hidden');
+            //});
 
             fileInput.addEventListener('change', (e) => {
                 const file = e.target.files[0];
@@ -731,13 +732,13 @@
             const container = document.getElementById('floor-buttons-container');
             container.innerHTML = '';
 
-            // 単一階の場合は直接見取り図を開く
+            
             if (bData.floors.length === 1) {
                 openMapModal(buildingName, 1);
                 return;
             }
 
-            // 階数ボタンを動的生成
+            // 階数ボタン
             bData.floors.forEach(floor => {
                 const btn = document.createElement('button');
                 btn.className = 'floor-select-btn';
@@ -752,7 +753,7 @@
             document.getElementById('floor-modal').classList.add('active');
         }
 
-        // 見取り図表示モーダルを開く
+        // 見取り図の表示
         function openMapModal(buildingName, floor) {
             currentBuilding = buildingName;
             currentFloor = floor;
@@ -760,7 +761,7 @@
 
             document.getElementById('map-modal-title').textContent = `${buildingName} - ${floor}階 見取り図`;
 
-            // 階数切替タブの生成
+            // 階の切替
             const tabsContainer = document.getElementById('map-tabs-container');
             tabsContainer.innerHTML = '';
             
@@ -774,20 +775,19 @@
                 tabsContainer.appendChild(tabBtn);
             });
 
-            // 見取り図コンテンツの描画
+            
             renderMapContent(buildingName, floor);
 
-            // 部屋タグの描画
+            
             renderRoomTags(buildingName, floor);
 
             document.getElementById('map-modal').classList.add('active');
         }
 
-        // 見取り図の画像ロード処理
         function renderMapContent(building, floor) {
             const container = document.getElementById('map-body-content');
             
-            // 設定テーブルから画像のパスを取得（未登録の場合はデフォルト指定）
+            
             let imagePath = '';
             if (floorPlanImages[building] && floorPlanImages[building][floor]) {
                 imagePath = floorPlanImages[building][floor];
@@ -804,34 +804,34 @@
         }
 
         // 画像が見つからない場合のフォールバック（仮の図面を表示）
-        function renderSVGFallback(imgElem, building, floor) {
-            const container = imgElem.parentElement;
-            const rooms = (schoolData[building] && schoolData[building].rooms[floor]) 
-                ? schoolData[building].rooms[floor] 
-                : ['部屋A', '部屋B'];
+        //function renderSVGFallback(imgElem, building, floor) {
+            //const container = imgElem.parentElement;
+            //const rooms = (schoolData[building] && schoolData[building].rooms[floor]) 
+                //? schoolData[building].rooms[floor] 
+                //: ['部屋A', '部屋B'];
 
-            const roomBoxes = rooms.map((r, i) => {
-                const x = 40 + (i % 3) * 180;
-                const y = 70 + Math.floor(i / 3) * 100;
-                return `
-                    <g transform="translate(${x}, ${y})">
-                        <rect width="160" height="80" rx="8" fill="#ffffff" stroke="#00acc1" stroke-width="2"/>
-                        <text x="80" y="45" font-family="sans-serif" font-size="13" font-weight="bold" fill="#006064" text-anchor="middle" dominant-baseline="middle">${r}</text>
-                    </g>
-                `;
-            }).join('');
+            //const roomBoxes = rooms.map((r, i) => {
+                //const x = 40 + (i % 3) * 180;
+                //const y = 70 + Math.floor(i / 3) * 100;
+                //return `
+                    //<g transform="translate(${x}, ${y})">
+                       // <rect width="160" height="80" rx="8" fill="#ffffff" stroke="#00acc1" stroke-width="2"/>
+                       // <text x="80" y="45" font-family="sans-serif" font-size="13" font-weight="bold" fill="#006064" text-anchor="middle" dominant-baseline="middle">${r}</text>
+                   // </g>
+              //  `;
+         //   }).join('');
 
-            container.innerHTML = `
-                <div style="width: 100%; text-align: center;">
-                    <div style="font-size: 11px; color: #00838f; margin-bottom: 8px;">
-                        ※ <code>${imgElem.src}</code> が見つからないため、簡易レイアウトを表示しています
-                    </div>
-                    <svg viewBox="0 0 600 320" style="width: 100%; max-height: 380px; background: #e0f7fa; border-radius: 12px; border: 1px dashed #00acc1;">
-                        <rect x="15" y="15" width="570" height="290" rx="12" fill="none" stroke="#00838f" stroke-width="2" stroke-dasharray="4 4"/>
-                        <text x="30" y="40" font-family="sans-serif" font-size="13" font-weight="bold" fill="#006064">📌 【レイアウト構造図】 ${building} ${floor}階</text>
-                        ${roomBoxes}
-                    </svg>
-                </div>
+           // container.innerHTML = `
+             //   <div style="width: 100%; text-align: center;">
+                  //  <div style="font-size: 11px; color: #00838f; margin-bottom: 8px;">
+                 //       ※ <code>${imgElem.src}</code> が見つからないため、簡易レイアウトを表示しています
+                //    </div>
+                  //  <svg viewBox="0 0 600 320" style="width: 100%; max-height: 380px; background: #e0f7fa; border-radius: 12px; border: 1px dashed #00acc1;">
+                      //  <rect x="15" y="15" width="570" height="290" rx="12" fill="none" stroke="#00838f" stroke-width="2" stroke-dasharray="4 4"/>
+                      //  <text x="30" y="40" font-family="sans-serif" font-size="13" font-weight="bold" fill="#006064">📌 【レイアウト構造図】 ${building} ${floor}階</text>
+                    //    ${roomBoxes}
+                  //  </svg>
+                //</div>
             `;
         }
 

@@ -683,37 +683,8 @@
             init3DViewer();
         });
 
-        // 3Dモデル読み込みとエラー判定-------------------------------------------------------------------------------------------------------------------//
-        //----------------------------------------------------------------------------------------------------------------------------------------------//
-//       function init3DViewer() {
-//            const viewer = document.getElementById('school-viewer');
-//            const banner = document.getElementById('notice-banner');
-//            const fileInput = document.getElementById('file-input');
-//            const targetFileName = '学校.glb';
-//
-//            try {
-//            const currentHref = window.location.href;
-//                if (currentHref.startsWith('http://') || currentHref.startsWith('https://')) {
-//                    viewer.src = new URL(targetFileName, currentHref).href;
-//                } //else {
-//                    //banner.classList.remove('hidden');
-//                }
-//            } catch (e) {
-//                banner.classList.remove('hidden');
-//            }
-
-            //viewer.addEventListener('error', () => {
-                //banner.classList.remove('hidden');
-            //});
-
-//            fileInput.addEventListener('change', (e) => {
-//                const file = e.target.files[0];
-//                if (file) {
-//                    viewer.src = URL.createObjectURL(file);
-//                    banner.classList.add('hidden');
-//                }
-//            });
-//        }
+        // 3Dモデル読み込み----------------------------------------------------------------------------------------------------------------------------------------------//
+        //--------------------------------------------------------------------------------------------------------------------------------------------------------------//
         function init3DViewer() {
              const viewer = document.getElementById('school-viewer');
              viewer.src = '学校.glb';

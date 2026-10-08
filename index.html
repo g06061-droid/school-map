@@ -762,12 +762,11 @@
                 imagePath = `images/${building}_${floor}F.png`;
             }
 
-            container.innerHTML = `
-                <img src="${imagePath}" 
-                     alt="${building} ${floor}階 見取り図" 
-                     style="max-width: 100%; max-height: 460px; border-radius: 8px; object-fit: contain;"
-                     onerror="renderSVGFallback(this, '${building}', ${floor})">
-            `;
+               container.innerHTML = `
+                       <img src="${imagePath}" 
+                       alt="${building} ${floor}階 見取り図" 
+                       style="max-width: 100%; max-height: 460px; border-radius: 8px; object-fit: contain;">
+                       `;
         }
 
         // 部屋タグの挿入

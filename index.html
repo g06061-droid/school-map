@@ -137,7 +137,7 @@
             display: none;
         }
 
-        .upload-btn {
+        .upload-botan {
             background-color: #00acc1;
             color: white;
             padding: 5px 12px;
@@ -149,7 +149,7 @@
             transition: background-color 0.2s;
         }
 
-        .upload-btn:hover {
+        .upload-botan:hover {
             background-color: #00838f;
         }
 
@@ -214,7 +214,7 @@
             border-radius: 4px;
         }
 
-        .building-btn {
+        .building-botan {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -230,7 +230,7 @@
             transition: background 0.2s, transform 0.1s;
         }
 
-        .building-btn:hover {
+        .building-botan:hover {
             background: #e0f7fa;
             transform: translateY(-1px);
         }
@@ -280,7 +280,7 @@
             to { transform: scale(1); opacity: 1; }
         }
 
-        .close-btn {
+        .close-botan {
             position: absolute;
             top: 12px;
             right: 16px;
@@ -291,18 +291,18 @@
             cursor: pointer;
         }
 
-        .close-btn:hover {
+        .close-botan:hover {
             color: #333;
         }
 
-        .floor-btn-grid {
+        .floor-botan-grid {
             display: flex;
             flex-direction: column;
             gap: 10px;
             margin-top: 16px;
         }
 
-        .floor-select-btn {
+        .floor-select-botan {
             width: 100%;
             padding: 12px;
             background: #00acc1;
@@ -315,7 +315,7 @@
             transition: background 0.2s;
         }
 
-        .floor-select-btn:hover {
+        .floor-select-botan:hover {
             background: #00838f;
         }
 
@@ -353,7 +353,7 @@
             overflow-x: auto;
         }
 
-        .tab-btn {
+        .tab-botan {
             padding: 6px 14px;
             border-radius: 8px;
             border: 1px solid #00acc1;
@@ -365,7 +365,7 @@
             white-space: nowrap;
         }
 
-        .tab-btn.active {
+        .tab-botan.active {
             background: #00acc1;
             color: white;
         }
@@ -430,7 +430,7 @@
        }
 
        /* トイレピン切替ボタン */
-       .toggle-btn {
+       .toggle-botan {
             width: 100%;
             padding: 10px;
             margin-bottom: 12px;
@@ -443,10 +443,10 @@
             cursor: pointer;
             transition: background 0.2s;
       }
-        .toggle-btn:hover {
+        .toggle-botan:hover {
             background: #00796b;
       }
-        .toggle-btn.off {
+        .toggle-botan.off {
             background: #78909c;
       }
     </style>
@@ -527,45 +527,45 @@
                 <div class="sidebar-desc">校舎を選択すると階ごとの見取り図が開きます。</div>
 
                 <div class="building-list">
-                    <button class="building-btn" onclick="openFloorSelector('本館')">
+                    <button class="building-botan" onclick="openFloorSelector('本館')">
                         <span> 本館</span>
                         <span class="badge">1〜4階</span>
                     </button>
-                    <button class="building-btn" onclick="openFloorSelector('1号館')">
+                    <button class="building-botan" onclick="openFloorSelector('1号館')">
                         <span> 1号館</span>
                         <span class="badge">1〜2階</span>
                     </button>
-                    <button class="building-btn" onclick="openFloorSelector('2号館')">
+                    <button class="building-botan" onclick="openFloorSelector('2号館')">
                         <span> 2号館</span>
                         <span class="badge">1〜3階</span>
                     </button>
-                    <button class="building-btn" onclick="openFloorSelector('3号館')">
+                    <button class="building-botan" onclick="openFloorSelector('3号館')">
                         <span> 3号館</span>
                         <span class="badge">1〜3階</span>
                     </button>
-                    <button class="building-btn" onclick="openFloorSelector('4号館')">
+                    <button class="building-botan" onclick="openFloorSelector('4号館')">
                         <span> 4号館</span>
                         <span class="badge">1〜2階</span>
                     </button>
-                    <button class="building-btn" onclick="openFloorSelector('高専会館')">
+                    <button class="building-botan" onclick="openFloorSelector('高専会館')">
                         <span> 高専会館</span>
                     </button>
-                    <button class="building-btn" onclick="openFloorSelector('図書館')">
+                    <button class="building-botan" onclick="openFloorSelector('図書館')">
                         <span> 図書館</span>
                         <span class="badge">1〜2階</span>
                     </button>
-                    <button class="building-btn" onclick="openFloorSelector('体育館')">
+                    <button class="building-botan" onclick="openFloorSelector('体育館')">
                         <span> 体育館</span>
                     </button>
-                    <button class="building-btn" onclick="openFloorSelector('学生会館')">
+                    <button class="building-botan" onclick="openFloorSelector('学生会館')">
                         <span> 学生会館</span>
                         <span class="badge">1〜3階</span>
                     </button>
-                    <button class="building-btn" onclick="openFloorSelector('武道場')">
+                    <button class="building-botan" onclick="openFloorSelector('武道場')">
                         <span> 武道場</span>
                     </button>
     
-                    <button id="toggle-toire-btn" class="toggle-btn off" onclick="toggleToireHotspots()">
+                    <button id="toggle-toire-botan" class="toggle-botan off" onclick="toggleToireHotspots()">
                          🚻 トイレピン：OFF
                     </button>
                     <div class="building-list">
@@ -579,7 +579,7 @@
     <!-- 階数選択 -->
     <div id="floor-modal" class="modal-overlay">
         <div class="modal-card">
-            <button class="close-btn" onclick="closeModal('floor-modal')">&times;</button>
+            <button class="close-botan" onclick="closeModal('floor-modal')">&times;</button>
             <h3 id="modal-building-name" style="margin: 0 0 4px 0; color: #006064;">校舎名</h3>
             <p style="font-size: 12px; color: #00838f; margin: 0 0 16px 0;">確認したい階数を選んでください</p>
             <div id="floor-buttons-container" class="floor-btn-grid">
@@ -593,7 +593,7 @@
         <div class="map-modal-card">
             <div class="map-header">
                 <span id="map-modal-title">校舎名 - 見取り図</span>
-                <button class="close-btn" style="color: white; position: static;" onclick="closeModal('map-modal')">&times;</button>
+                <button class="close-botan" style="color: white; position: static;" onclick="closeModal('map-modal')">&times;</button>
             </div>
             
             <div id="map-tabs-container" class="map-tabs">
@@ -754,16 +754,16 @@
 
         function toggleToireHotspots() {
              const viewer = document.getElementById('school-viewer');
-             const btn = document.getElementById('toggle-toire-btn');
+             const botan = document.getElementById('toggle-toire-botan');
 
              viewer.classList.toggle('hide-toire-hotspots');
 
              if (!viewer.classList.contains('hide-toire-hotspots')) {
-                 btn.textContent = '🚻 トイレピン：ON';
-                 btn.classList.remove('off'); 
+                 botan.textContent = '🚻 トイレピン：ON';
+                 botan.classList.remove('off'); 
              } else {
-                 btn.textContent = '🚻 トイレピン：OFF';
-                 btn.classList.add('off'); 
+                 botan.textContent = '🚻 トイレピン：OFF';
+                 botan.classList.add('off'); 
              }
         } 
 
@@ -784,14 +784,14 @@
 
             // 階数ボタン
             bData.floors.forEach(floor => {
-                const btn = document.createElement('button');
-                btn.className = 'floor-select-btn';
-                btn.textContent = `${floor} 階`;
-                btn.onclick = () => {
+                const botan = document.createElement('button');
+                botan.className = 'floor-select-botan';
+                botan.textContent = `${floor} 階`;
+                botan.onclick = () => {
                     closeModal('floor-modal');
                     openMapModal(buildingName, floor);
                 };
-                container.appendChild(btn);
+                container.appendChild(botan);
             });
 
             document.getElementById('floor-modal').classList.add('active');
@@ -810,13 +810,13 @@
             tabsContainer.innerHTML = '';
             
             bData.floors.forEach(f => {
-                const tabBtn = document.createElement('button');
-                tabBtn.className = `tab-btn ${f === floor ? 'active' : ''}`;
-                tabBtn.textContent = `${f}階`;
-                tabBtn.onclick = () => {
+                const tabBotan = document.createElement('button');
+                tabBotan.className = `tab-botan ${f === floor ? 'active' : ''}`;
+                tabBotan.textContent = `${f}階`;
+                tabBotan.onclick = () => {
                     openMapModal(buildingName, f);
                 };
-                tabsContainer.appendChild(tabBtn);
+                tabsContainer.appendChild(tabBotan);
             });
 
             

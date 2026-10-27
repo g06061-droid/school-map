@@ -414,6 +414,41 @@
             color: #006064;
             text-align: center;
         }
+
+        model-viewer.hide-toire-hotspots .Hotspot.toire-pin {
+            display: none !important;
+       }
+
+       /* トイレのピン */
+        .Hotspot.toire-pin {
+            background: #26a69a;
+            border-color: #ffffff;
+       }
+
+       .Hotspot.toire-pin:hover, .Hotspot.toire-pin:active {
+            background: #00796b;
+       }
+
+       /* トイレピン切替ボタン */
+       .toggle-btn {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 12px;
+            background: #26a69a;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+      }
+        .toggle-btn:hover {
+            background: #00796b;
+      }
+        .toggle-btn.off {
+            background: #78909c;
+      }
     </style>
 </head>
 
@@ -435,6 +470,7 @@
             <!-- 3Dモデル表示タグ (ご指定の座標・設定を適用した10棟分のピン配置) -->
             <model-viewer
                 id="school-viewer"
+                class="hide-toire-hotspots" 
                 camera-controls
                 shadow-intensity="0.5"
                 exposure="1"
@@ -471,7 +507,15 @@
                 <button class="Hotspot" slot="hotspot-bldg-10" data-position="80m 16m -7m" data-normal="0m 1m 0m" onclick="openFloorSelector('武道場')">
                      武道場
                 </button>
-                
+                <button class="Hotspot toire-pin" slot="hotspot-toire-1" data-position="-70m 16m -25m" data-normal="0m 1m 0m" onclick="alert('トイレ')">
+                    トイレ🚻
+                </button>
+                <button class="Hotspot toire-pin" slot="hotspot-toire-2" data-position="-35m 16m 25m" data-normal="0m 1m 0m" onclick="alert('トイレ')">
+                    トイレ🚻
+                </button>
+                <button class="Hotspot toire-pin" slot="hotspot-toire-3" data-position="50m 16m -5m" data-normal="0m 1m 0m" onclick="alert('トイレ')">
+                    トイレ🚻
+                </button>
             </model-viewer>
             
         </div>
@@ -520,6 +564,11 @@
                     <button class="building-btn" onclick="openFloorSelector('武道場')">
                         <span> 武道場</span>
                     </button>
+    
+                    <button id="toggle-toire-btn" class="toggle-btn off" onclick="toggleToireHotspots()">
+                         🚻 トイレピン：OFF
+                    </button>
+                    <div class="building-list">
                 </div>
             </div>
 
@@ -653,10 +702,9 @@
                 }
             },
             '高専会館': {
-                floors: [1, 2],
+                floors: [1],
                 rooms: {
-                    1: ['Now Loading'],
-                    2: ['Now Loading']
+                    1: ['Now Loading']
                 }
             },
             '図書館': {
@@ -703,6 +751,21 @@
              const viewer = document.getElementById('school-viewer');
              viewer.src = '学校.glb';
         }
+
+        function toggleToireHotspots() {
+             const viewer = document.getElementById('school-viewer');
+             const btn = document.getElementById('toggle-toire-btn');
+
+             viewer.classList.toggle('hide-toire-hotspots');
+
+             if (!viewer.classList.contains('hide-toire-hotspots')) {
+                 btn.textContent = '🚻 トイレピン：ON';
+                 btn.classList.remove('off'); 
+             } else {
+                 btn.textContent = '🚻 トイレピン：OFF';
+                 btn.classList.add('off'); 
+             }
+        } 
 
         // 階数選択モーダルを開く
         function openFloorSelector(buildingName) {
